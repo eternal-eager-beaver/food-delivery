@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Prisma } from '@food-delivery/prisma-client-user';
 
 export const userSelect: Prisma.UserSelect = {
   id: true,

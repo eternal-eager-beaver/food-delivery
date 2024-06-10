@@ -1,21 +1,24 @@
+import { DataAccessUserModule } from '@food-delivery/data-access-user';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { JwtModule } from '@nestjs/jwt';
-import { getJwtConfig } from '../config/jwt.config';
-import { PrismaService } from '../shared/database/prisma.service';
+import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
     JwtModule.registerAsync({
       imports: [ConfigModule],
+      useFactory: async (
+        configService: ConfigService
+      ): Promise<JwtModuleOptions> => ({
+        secret: configService.get('JWT_SECRET'),
+      }),
       inject: [ConfigService],
-      useFactory: getJwtConfig,
     }),
+    DataAccessUserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, PrismaService, JwtStrategy],
+  providers: [JwtStrategy],
 })
 export class AuthModule {}

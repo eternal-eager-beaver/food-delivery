@@ -1,5 +1,5 @@
+import { User } from '@food-delivery/prisma-client-user';
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
-import { User } from '@prisma/client';
 
 export const CurrentUser = createParamDecorator(
   (data: keyof User, context: ExecutionContext) => {
@@ -7,5 +7,5 @@ export const CurrentUser = createParamDecorator(
     const { user } = request;
 
     return data ? user[data] : user;
-  },
+  }
 );

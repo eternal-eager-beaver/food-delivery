@@ -1,6 +1,6 @@
+import { AuthService } from '@food-delivery/data-access-user';
 import { Body, Controller, Post } from '@nestjs/common';
 import { Auth } from './auth.decorator';
-import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { RefreshTokenDto } from './dto/refresh-token.dto';
 import { RegisterDto } from './dto/register.dto';

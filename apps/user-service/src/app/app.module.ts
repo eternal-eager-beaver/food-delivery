@@ -3,8 +3,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import Joi from 'joi';
 import { AuthModule } from '../auth/auth.module';
+import { UserModule } from '../user/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+
+console.log('ENV: ', process.env);
 
 @Module({
   imports: [
@@ -22,9 +25,11 @@ import { AppService } from './app.service';
         DATABASE_PASSWORD: Joi.string().required(),
         DATABASE_NAME: Joi.string().required(),
         DATABASE_URL: Joi.string().required(),
+        JWT_SECRET: Joi.string().required(),
       }),
     }),
     AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],

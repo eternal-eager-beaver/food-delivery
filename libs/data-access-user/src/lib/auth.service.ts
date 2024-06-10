@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { PrismaService, User } from '@food-delivery/prisma-client-user';
 import {
   BadRequestException,
   Injectable,
@@ -6,16 +7,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '@prisma/client';
 import { hash, verify } from 'argon2';
-import { PrismaService } from '../shared/database/prisma.service';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private jwt: JwtService,
-    private prisma: PrismaService,
-  ) {}
+  constructor(private jwt: JwtService, private prisma: PrismaService) {}
 
   async register(email: string, password: string) {
     const existingUser = await this.prisma.user.findUnique({
