@@ -22,6 +22,12 @@
         "libs/data-access-product/src/index.ts"
       ],
       "@food-delivery/data-access-user": ["libs/data-access-user/src/index.ts"],
+      "@food-delivery/prisma-client-product": [
+        "libs/prisma-client-product/src/index.ts"
+      ],
+      "@food-delivery/prisma-client-user": [
+        "libs/prisma-client-user/src/index.ts"
+      ],
       "@food-delivery/prisma-schema-product": [
         "libs/prisma-schema-product/src/index.ts"
       ],
