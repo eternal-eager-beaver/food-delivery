@@ -24,7 +24,7 @@ model Product {
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int?
 
-  userId Int
+  // userId Int
 
   @@map("product")
 }
