@@ -33,7 +33,8 @@
       ],
       "@food-delivery/prisma-schema-user": [
         "libs/prisma-schema-user/src/index.ts"
-      ]
+      ],
+      "@food-delivery/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
