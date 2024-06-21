@@ -1,1 +1,1 @@
-export * from './lib/utils';
+export * from './lib/generate-slug/generate-slug.util';
