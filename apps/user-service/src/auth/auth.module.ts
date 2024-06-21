@@ -1,4 +1,5 @@
 import { DataAccessUserModule } from '@food-delivery/data-access-user';
+import { PrismaService } from '@food-delivery/prisma-client-user';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
@@ -19,6 +20,6 @@ import { JwtStrategy } from './jwt.strategy';
     DataAccessUserModule,
   ],
   controllers: [AuthController],
-  providers: [JwtStrategy],
+  providers: [JwtStrategy, PrismaService],
 })
 export class AuthModule {}
