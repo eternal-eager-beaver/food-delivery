@@ -61,6 +61,10 @@ export class AuthService {
       where: { id: result.id },
     });
 
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
     const tokens = this.issueTokens(user.id);
 
     return {
