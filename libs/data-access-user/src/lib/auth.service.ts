@@ -6,12 +6,19 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { hash, verify } from 'argon2';
 
 @Injectable()
 export class AuthService {
-  constructor(private jwt: JwtService, private prisma: PrismaService) {}
+  private readonly jwtSecret = this.configService.getOrThrow('JWT_SECRET');
+
+  constructor(
+    private readonly configService: ConfigService,
+    private jwt: JwtService,
+    private prisma: PrismaService
+  ) {}
 
   async register(email: string, password: string) {
     const existingUser = await this.prisma.user.findUnique({
@@ -32,7 +39,7 @@ export class AuthService {
       },
     });
 
-    const tokens = this.issueTokens(user.id);
+    const tokens = await this.issueTokens(user.id);
 
     return {
       ...tokens,
@@ -42,7 +49,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     const user = await this.validateUser(email, password);
-    const tokens = this.issueTokens(user.id);
+    const tokens = await this.issueTokens(user.id);
 
     return {
       ...tokens,
@@ -65,7 +72,7 @@ export class AuthService {
       throw new NotFoundException('User not found');
     }
 
-    const tokens = this.issueTokens(user.id);
+    const tokens = await this.issueTokens(user.id);
 
     return {
       ...tokens,
@@ -91,9 +98,11 @@ export class AuthService {
     return user;
   }
 
-  private issueTokens(id: number) {
-    const accessToken = this.jwt.sign({ id }, { expiresIn: '1d' });
-    const refreshToken = this.jwt.sign({ id }, { expiresIn: '7d' });
+  private async issueTokens(id: number) {
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwt.signAsync({ id }, { expiresIn: '1d', secret: this.jwtSecret }),
+      this.jwt.signAsync({ id }, { expiresIn: '7d', secret: this.jwtSecret }),
+    ]);
 
     return { accessToken, refreshToken };
   }
