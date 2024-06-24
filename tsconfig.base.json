@@ -35,7 +35,7 @@
         "libs/prisma-schema-user/src/index.ts"
       ],
       "@food-delivery/store": ["libs/shared/store/src/index.ts"],
-      "@food-delivery/utils": ["libs/utils/src/index.ts"]
+      "@food-delivery/utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
