@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/data-access-product/src",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:data-access", "scope:product"],
   "// targets": "to see all targets run: nx show project data-access-product --web",
   "targets": {}
 }

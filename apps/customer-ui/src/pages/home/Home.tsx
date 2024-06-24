@@ -1,8 +1,8 @@
 import { store } from '@food-delivery/store';
-import { User } from '@prisma/client/user';
 import { FC, useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Nullable } from '../../common/types/nullable';
+import type { User } from '../../features/auth/types/user';
 import { UserService } from '../../features/user/services/UserDaoService';
 
 const Home: FC = () => {
