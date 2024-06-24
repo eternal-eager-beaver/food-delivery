@@ -13,7 +13,7 @@ import { RootStackParamList } from '../types/route';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const Navigation: FC = () => {
-  const { user } = useAuth();
+  const { authState } = useAuth();
   const [currentPage, setCurrentPage] = useState(
     undefined as keyof RootStackParamList | undefined
   );
@@ -47,14 +47,14 @@ export const Navigation: FC = () => {
             },
           }}
         >
-          {user ? (
+          {authState?.authenticated ? (
             routes.map((route) => <Stack.Screen key={route.name} {...route} />)
           ) : (
             <Stack.Screen name="Auth" component={Auth} />
           )}
         </Stack.Navigator>
       </NavigationContainer>
-      {user && currentPage && (
+      {authState?.authenticated && currentPage && (
         <BottomMenu currentPage={currentPage} navigateTo={navRef.navigate} />
       )}
     </>

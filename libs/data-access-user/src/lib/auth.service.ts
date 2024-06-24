@@ -20,7 +20,7 @@ export class AuthService {
     private prisma: PrismaService
   ) {}
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string): Promise<AuthResponse> {
     const existingUser = await this.prisma.user.findUnique({
       where: { email },
     });
@@ -47,7 +47,7 @@ export class AuthService {
     };
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string): Promise<AuthResponse> {
     const user = await this.validateUser(email, password);
     const tokens = await this.issueTokens(user.id);
 
@@ -57,7 +57,7 @@ export class AuthService {
     };
   }
 
-  async refreshToken(refreshToken: string) {
+  async refreshToken(refreshToken: string): Promise<AuthResponse> {
     const result = await this.jwt.verifyAsync(refreshToken);
 
     if (!result) {
@@ -107,10 +107,18 @@ export class AuthService {
     return { accessToken, refreshToken };
   }
 
-  private getUserFields(user: User) {
+  private getUserFields(user: User): PublicUser {
     return {
       id: user.id,
       email: user.email,
     };
   }
 }
+
+interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: PublicUser;
+}
+
+type PublicUser = Pick<User, 'id' | 'email'>;
