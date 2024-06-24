@@ -21,6 +21,7 @@
         "@nx/dependency-checks": [
           "error",
           {
+            "ignoredDependencies": ["lodash"],
             "ignoredFiles": ["{projectRoot}/esbuild.config.{js,ts,mjs,mts}"]
           }
         ]

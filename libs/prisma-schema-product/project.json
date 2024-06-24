@@ -23,13 +23,6 @@
       "options": {
         "cwd": "libs/prisma-schema-product"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["libs/prisma-schema-product/**/*.ts"]
-      }
     }
   }
 }
