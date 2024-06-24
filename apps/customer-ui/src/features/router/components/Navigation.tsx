@@ -1,12 +1,12 @@
-import { useAuth } from '@/features/auth/hooks/useAuth';
-import { BottomMenu } from '@/features/ui/components/BottomMenu/BottomMenu';
-import Auth from '@/pages/auth/Auth';
 import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { FC, useEffect, useState } from 'react';
+import Auth from '../../../pages/auth/Auth';
+import { useAuth } from '../../auth/hooks/useAuth';
+import { BottomMenu } from '../../ui/components/BottomMenu/BottomMenu';
 import { routes } from '../constants/routes';
 import { RootStackParamList } from '../types/route';
 

@@ -1,4 +1,4 @@
-import { HttpService } from '@/common/services/HttpService';
+import { HttpService } from '../../../common/services/HttpService';
 import { AuthDto } from '../types/auth-dto';
 
 async function login(dto: AuthDto): Promise<AuthResponse> {

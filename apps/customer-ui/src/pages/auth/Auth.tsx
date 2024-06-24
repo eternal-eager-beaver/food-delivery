@@ -1,12 +1,12 @@
-import { AuthFields } from '@/features/auth/components/AuthFields/AuthFields';
-import { useAuth } from '@/features/auth/hooks/useAuth';
-import { AuthFormData } from '@/features/auth/types/auth-form-data';
-import { useTypedNavigation } from '@/features/router/hooks/useTypedNavigation';
-import { Button } from '@/features/ui/components/Button';
-import { Loader } from '@/features/ui/components/Loader';
 import React, { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { StyleSheet, Text, View } from 'react-native';
+import { AuthFields } from '../../features/auth/components/AuthFields/AuthFields';
+import { useAuth } from '../../features/auth/hooks/useAuth';
+import type { AuthFormData } from '../../features/auth/types/auth-form-data';
+import { useTypedNavigation } from '../../features/router/hooks/useTypedNavigation';
+import { Button } from '../../features/ui/components/Button';
+import { Loader } from '../../features/ui/components/Loader';
 
 const Auth: FC = () => {
   const { navigate } = useTypedNavigation();

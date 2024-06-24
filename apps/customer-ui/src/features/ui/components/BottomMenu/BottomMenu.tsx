@@ -1,7 +1,7 @@
-import { RootStackParamList } from '@/features/router/types/route';
 import { FC } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import type { RootStackParamList } from '../../../router/types/route';
 import {
   BottomMenuItem,
   MenuItem,

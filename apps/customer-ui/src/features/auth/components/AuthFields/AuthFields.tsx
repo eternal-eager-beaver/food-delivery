@@ -1,7 +1,7 @@
-import { emailRegExp } from '@/common/constants/email-regexp';
-import { Field } from '@/features/ui/components/Field';
 import { FC } from 'react';
 import { Control } from 'react-hook-form';
+import { emailRegExp } from '../../../../common/constants/email-regexp';
+import { Field } from '../../../ui/components/Field';
 import { AuthFormData } from '../../types/auth-form-data';
 
 interface AuthFieldsProps {

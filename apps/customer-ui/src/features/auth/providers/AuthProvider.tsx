@@ -1,5 +1,3 @@
-import { HttpService } from '@/common/services/HttpService';
-import { Nullable } from '@/common/types/nullable';
 import * as SecureStore from 'expo-secure-store';
 import * as SplashScreen from 'expo-splash-screen';
 import {
@@ -9,6 +7,8 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { HttpService } from '../../../common/services/HttpService';
+import type { Nullable } from '../../../common/types/nullable';
 import { AuthResponse, AuthService } from '../services/AuthDaoService';
 import { AuthDto } from '../types/auth-dto';
 import { User } from '../types/user';

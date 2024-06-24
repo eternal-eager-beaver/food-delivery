@@ -1,7 +1,7 @@
-import { RootStackParamList } from '@/features/router/types/route';
 import { Feather } from '@expo/vector-icons';
 import { FC } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
+import type { RootStackParamList } from '../../../router/types/route';
 
 export type FeatherIconNames = keyof typeof Feather.glyphMap;
 

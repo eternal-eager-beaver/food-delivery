@@ -1,9 +1,9 @@
-import Auth from '@/pages/auth/Auth';
-import Explorer from '@/pages/explorer/Explorer';
-import Favorites from '@/pages/favorites/Favorites';
-import Home from '@/pages/home/Home';
-import Profile from '@/pages/profile/Profile';
-import Search from '@/pages/search/Search';
+import Auth from '../../../pages/auth/Auth';
+import Explorer from '../../../pages/explorer/Explorer';
+import Favorites from '../../../pages/favorites/Favorites';
+import Home from '../../../pages/home/Home';
+import Profile from '../../../pages/profile/Profile';
+import Search from '../../../pages/search/Search';
 import { IRoute } from '../types/route';
 
 // TODO: use lazy loading
