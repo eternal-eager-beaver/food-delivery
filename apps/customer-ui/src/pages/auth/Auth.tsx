@@ -13,7 +13,7 @@ const Auth: FC = () => {
   const { onLogin, onRegister } = useAuth();
   const isLoading = false;
 
-  const [isRegistration, setIsRegistration] = useState(true);
+  const [isRegistration, setIsRegistration] = useState(false);
 
   const currentStateName = isRegistration ? 'Sign up' : 'Login';
 

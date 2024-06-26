@@ -1,8 +1,9 @@
+import type { Nullable } from '@food-delivery/utils';
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
 export interface UserState {
-  user: User;
+  user: Nullable<User>;
 }
 
 interface User {
@@ -14,20 +15,14 @@ interface User {
 }
 
 const initialState: UserState = {
-  user: {
-    id: '',
-    email: '',
-    password: '',
-    name: '',
-    avatarPath: '',
-  },
+  user: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
+    setUser: (state, action: PayloadAction<Nullable<User>>) => {
       state.user = action.payload;
     },
   },

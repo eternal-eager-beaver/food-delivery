@@ -10,7 +10,7 @@ export class UserController {
 
   @Auth()
   @Get('current')
-  getProfile(@CurrentUser('id') userId: number) {
+  getCurrentUser(@CurrentUser('id') userId: number) {
     return this.userService.getById(userId);
   }
 

@@ -1,3 +1,4 @@
+import type { Nullable } from '@food-delivery/utils';
 import * as SecureStore from 'expo-secure-store';
 import * as SplashScreen from 'expo-splash-screen';
 import {
@@ -8,7 +9,6 @@ import {
   useState,
 } from 'react';
 import { HttpService } from '../../../common/services/HttpService';
-import type { Nullable } from '../../../common/types/nullable';
 import type { User } from '../../user/types/user';
 import { AuthResponse, AuthService } from '../services/AuthDaoService';
 import { AuthDto } from '../types/auth-dto';
