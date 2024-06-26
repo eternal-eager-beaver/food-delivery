@@ -1,13 +1,19 @@
 import { Module } from '@nestjs/common';
 
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import Joi from 'joi';
+import { join } from 'node:path';
 import { ProductModule } from '../product/product.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, 'assets'),
+      serveRoot: '/assets',
+    }),
     ConfigModule.forRoot({
       isGlobal: true,
       expandVariables: true,
