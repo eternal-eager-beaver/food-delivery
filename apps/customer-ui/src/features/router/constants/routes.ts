@@ -1,3 +1,4 @@
+import Cart from '../../../pages/cart/Cart';
 import Explorer from '../../../pages/explorer/Explorer';
 import Favorites from '../../../pages/favorites/Favorites';
 import Home from '../../../pages/home/Home';
@@ -26,5 +27,9 @@ export const routes: IRoute[] = [
   {
     name: 'Profile',
     component: Profile,
+  },
+  {
+    name: 'Cart',
+    component: Cart,
   },
 ];
