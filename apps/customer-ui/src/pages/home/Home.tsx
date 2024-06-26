@@ -1,22 +1,27 @@
-import { store } from '@food-delivery/store';
-import { FC, useEffect, useState } from 'react';
+import {
+  selectUser,
+  setUser,
+  useAppDispatch,
+  useAppSelector,
+} from '@food-delivery/store';
+import { FC, useEffect } from 'react';
 import { Text, View } from 'react-native';
-import { Nullable } from '../../common/types/nullable';
-import type { User } from '../../features/auth/types/user';
 import { UserService } from '../../features/user/services/UserDaoService';
 
 const Home: FC = () => {
-  const [user, setUser] = useState<Nullable<User>>(null);
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectUser);
+
   useEffect(() => {
     const fetchCurrentUser = async () => {
       const data = await UserService.getCurrentUser();
-      setUser(data);
+      dispatch(setUser(data));
     };
     fetchCurrentUser();
-  }, []);
+  }, [dispatch]);
+
   return (
     <View>
-      <Text>Home - {store()}</Text>
       {user && (
         <>
           <Text>{user.name}</Text>

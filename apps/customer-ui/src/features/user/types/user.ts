@@ -1,3 +1,5 @@
+import type { Product } from '../../product/types/product';
+
 export interface User {
   id: string;
   email: string;
@@ -5,9 +7,4 @@ export interface User {
   name: string;
   avatarPath: string;
   favorites: Product[];
-}
-
-// TODO: move to aapropriate feature
-interface Product {
-  name: string;
 }

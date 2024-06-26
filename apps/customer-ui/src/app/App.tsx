@@ -1,4 +1,5 @@
-
+import { store } from '@food-delivery/store';
+import { Provider } from 'react-redux';
 import { SafeAreaView, StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Toast from 'react-native-toast-message';
@@ -13,11 +14,13 @@ export const App = () => {
           flex: 1,
         }}
       >
-        <AuthProvider>
-          <SafeAreaProvider>
-            <Navigation />
-          </SafeAreaProvider>
-        </AuthProvider>
+        <Provider store={store}>
+          <AuthProvider>
+            <SafeAreaProvider>
+              <Navigation />
+            </SafeAreaProvider>
+          </AuthProvider>
+        </Provider>
       </SafeAreaView>
       <StatusBar barStyle="dark-content" />
       <Toast />
