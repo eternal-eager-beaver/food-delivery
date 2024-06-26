@@ -1,4 +1,3 @@
-import Auth from '../../../pages/auth/Auth';
 import Explorer from '../../../pages/explorer/Explorer';
 import Favorites from '../../../pages/favorites/Favorites';
 import Home from '../../../pages/home/Home';
@@ -8,10 +7,6 @@ import { IRoute } from '../types/route';
 
 // TODO: use lazy loading
 export const routes: IRoute[] = [
-  {
-    name: 'Auth',
-    component: Auth,
-  },
   {
     name: 'Home',
     component: Home,
