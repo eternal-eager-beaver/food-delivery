@@ -18,6 +18,12 @@
         "cwd": "libs/prisma-schema-product"
       }
     },
+    "db:push": {
+      "command": "prisma db push",
+      "options": {
+        "cwd": "libs/prisma-schema-product"
+      }
+    },
     "migrate": {
       "command": "prisma migrate dev",
       "options": {
