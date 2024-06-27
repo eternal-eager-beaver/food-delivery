@@ -1,18 +1,28 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { useTypedNavigation } from '../../../router/hooks/useTypedNavigation';
 import { Headline } from '../../../ui/components/Headline/Headline';
 import { Loader } from '../../../ui/components/Loader';
+import { CategoryService } from '../../services/CategoryService';
+import type { Category } from '../../types/category';
 
 export const getMediaSource = (path: string) => ({
   // uri: SERVER_URL + path
-  uri: 'http://localhost:3020' + path,
+  uri: 'http://localhost:3010' + path,
 });
 
 export const CategoryList: FC = () => {
-  const isLoading = true;
-  const categories: any[] = [];
+  const isLoading = false;
+  const [categories, setCategories] = useState<Category[]>();
   const { navigate } = useTypedNavigation();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const categories = await CategoryService.getList();
+      setCategories(categories);
+    };
+    fetchCategories();
+  }, []);
 
   return isLoading ? (
     <Loader />
@@ -23,7 +33,7 @@ export const CategoryList: FC = () => {
       <View style={styles.categoriesContainer}>
         {categories?.map((category) => (
           <Pressable
-            onPress={() => navigate('Category', { id: category.id })}
+            onPress={() => navigate('Category', { id: String(category.id) })}
             key={category.id}
             style={styles.category}
           >
@@ -53,7 +63,7 @@ const styles = StyleSheet.create({
   category: {
     borderRadius: 12,
     backgroundColor: '#f3f4f6',
-    padding: 20,
+    padding: 16,
     marginHorizontal: 8,
     alignItems: 'center',
   },

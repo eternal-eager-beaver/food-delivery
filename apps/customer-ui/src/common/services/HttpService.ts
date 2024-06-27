@@ -9,10 +9,10 @@ const instance = axios.create({
 });
 
 export const HttpService = {
-  get: instance.get.bind(instance),
-  post: instance.post.bind(instance),
-  put: instance.put.bind(instance),
-  delete: instance.delete.bind(instance),
+  get: instance.get,
+  post: instance.post,
+  put: instance.put,
+  delete: instance.delete,
   setAuthToken: (token: string) => {
     instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   },

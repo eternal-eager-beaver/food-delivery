@@ -12,7 +12,6 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  Query,
 } from '@nestjs/common';
 
 // TODO: Secure endpoints
@@ -27,19 +26,24 @@ export class CategoryController {
     return this.categoryService.create(dto);
   }
 
-  // TODO: redesign this method
   @Get()
-  read(@Query('id', ParseIntPipe) id, @Query('slug') slug) {
-    if (slug) {
-      return this.categoryService.getBySlug(slug);
-    }
-
-    if (id) {
-      return this.categoryService.getById(id);
-    }
-
+  getAll() {
     return this.categoryService.getAll();
   }
+
+  // TODO: redesign this method
+  // @Get()
+  // read(@Query('id', ParseIntPipe) id, @Query('slug') slug) {
+  //   if (slug) {
+  //     return this.categoryService.getBySlug(slug);
+  //   }
+
+  //   if (id) {
+  //     return this.categoryService.getById(id);
+  //   }
+
+  //   return this.categoryService.getAll();
+  // }
 
   // @Get(':slug/products')
   // getProductsBySlug(@Param('slug') slug: string) {
