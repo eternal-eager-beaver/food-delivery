@@ -1,11 +1,9 @@
 import { PrismaService } from '@food-delivery/prisma-client-product';
 import { Module } from '@nestjs/common';
-import { CreateProductDto } from './dto/create-product.dto';
-import { UpdateProductDto } from './dto/update-product.dto';
+import { CreateProductDto, UpdateProductDto } from './dto';
 import { ProductService } from './product.service';
 
 @Module({
-  controllers: [],
   providers: [
     PrismaService,
     ProductService,

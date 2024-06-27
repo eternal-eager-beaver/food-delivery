@@ -8,6 +8,9 @@ export type RootStackParamList = {
   Explorer: undefined;
   Profile: undefined;
   Cart: undefined;
+  Category: {
+    id: string;
+  };
 };
 
 export interface IRoute {

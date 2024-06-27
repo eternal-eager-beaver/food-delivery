@@ -1,8 +1,10 @@
 import { setUser, useAppDispatch } from '@food-delivery/store';
 import { FC, useEffect } from 'react';
+import { CategoryList } from '../../features/category/components/CategoryList/CategoryList';
 import { Header } from '../../features/router/components/Header';
 import { PageLayout } from '../../features/ui/components/PageLayout/PageLayout';
 import { UserService } from '../../features/user/services/UserDaoService';
+import { Banner } from './Banner';
 
 const Home: FC = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +21,8 @@ const Home: FC = () => {
   return (
     <PageLayout>
       <Header />
+      <Banner />
+      <CategoryList />
     </PageLayout>
   );
 };
