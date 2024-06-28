@@ -1,3 +1,4 @@
+import { default as httpProxy } from '@fastify/http-proxy';
 import Fastify from 'fastify';
 import { app } from './app/app';
 
@@ -11,6 +12,29 @@ const server = Fastify({
 
 // Register your application as a normal plugin.
 server.register(app);
+
+const registerProxyEndpoints = registerProxyEndpointsFor(server);
+
+const productService = 'http://localhost:3010';
+const userService = 'http://localhost:3020';
+
+registerProxyEndpoints(productService, [
+  '/api/v1/categories',
+  '/api/v1/products',
+]);
+registerProxyEndpoints(userService, ['/api/v1/users', '/api/v1/auth']);
+
+function registerProxyEndpointsFor(server: ReturnType<typeof Fastify>) {
+  return (serviceUrl: string, endpoints: string[]) => {
+    for (const endpoint of endpoints) {
+      server.register(httpProxy, {
+        upstream: serviceUrl,
+        prefix: endpoint,
+        rewritePrefix: endpoint,
+      });
+    }
+  };
+}
 
 // Start listening.
 server.listen({ port, host }, (err) => {

@@ -8,6 +8,7 @@
     "@expo/metro-config": "~0.18.1",
     "@expo/metro-runtime": "~3.2.1",
     "@fastify/autoload": "~5.7.1",
+    "@fastify/http-proxy": "^9.5.0",
     "@fastify/sensible": "~5.2.0",
     "@fastify/static": "^7.0.4",
     "@nestjs/common": "^10.0.2",
