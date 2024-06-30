@@ -2,9 +2,7 @@ import { HttpService } from '../../../common/services/HttpService';
 import type { Category } from '../types/category';
 
 async function getList(): Promise<Category[]> {
-  const response = await HttpService.get<Category[]>('/categories', {
-    baseURL: 'http://localhost:3010/api/v1',
-  });
+  const response = await HttpService.get<Category[]>('/categories');
   return response.data;
 }
 
