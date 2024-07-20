@@ -9,7 +9,19 @@ services:
     command: redis-server --loglevel warning
     volumes:
       - redis:/data
-  db:
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - ${MONGO_PORT}:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - mongo:/data/db
+
+  postgres:
     image: postgres
     restart: always
     shm_size: 128mb
@@ -25,3 +37,4 @@ services:
 volumes:
   redis:
   postgres:
+  mongo:
